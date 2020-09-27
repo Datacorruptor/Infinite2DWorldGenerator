@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/random_map.gd" type="Script" id=1]
+[ext_resource path="res://islands.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/flut.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Flutters.gd" type="Script" id=5]
+
+[node name="Node" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="Flutters" type="KinematicBody2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Flutters"]
+scale = Vector2( 0.01, 0.01 )
+texture = ExtResource( 4 )
+
+[node name="Area" type="CollisionPolygon2D" parent="Flutters"]
+polygon = PoolVector2Array( 3.73533, -9.67017, 5.42195, -6.7434, 6.95974, -7.83474, 7.90226, -6.44577, 3.68573, -2.82451, 4.08258, -0.195375, 2.94163, 1.88809, 1.50305, 4.02116, 0.61014, 7.4936, -1.47332, 6.45187, -1.57254, 3.02903, -0.679625, 2.48336, -0.679625, 0.499113, 0.312502, -1.48514, -5.49143, -0.344194, -6.43395, -2.82451, -4.40009, -3.27096, -6.18592, -9.12451, -2.11821, -11.8528, 1.0566, -12.1009, 2.09833, -9.12451 )
+
+[node name="Camera2D" type="Camera2D" parent="Flutters"]
+current = true
+script = ExtResource( 3 )
+
+[node name="Coords" type="Label" parent="Flutters/Camera2D"]
+margin_left = -21.0
+margin_top = 15.0
+margin_right = 21.0
+margin_bottom = 29.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
